@@ -1,14 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
+import logo from "../../public/logo.png";
 
 export default function HeaderNavigation() {
   return (
-    <div className="container">
-      <nav className="flex justify-between items-center p-6 bg-white dark:bg-gray-800 text-white ">
+    <div className="container w-full mx-auto">
+      <nav className="flex justify-between items-center p-6 bg-white dark:bg-gray-800 text-white shadow-2xl">
         {/* Left */}
         <div>
           <Link href="/">
-          <Image src="" alt=""/>
+            <Image
+              src={logo}
+              alt="logo"
+              width={100}
+              height={100}
+              className="bg-white dark:bg-gray-400 rounded-full mx-auto"
+            />
           </Link>
         </div>
         <div className="flex ">
