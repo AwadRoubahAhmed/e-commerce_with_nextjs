@@ -22,7 +22,7 @@ async function getProductsDetails({ params }: paramsType) {
   const data: dataType = await getProducts({ params });
 
   return (
-    <div className="relative h-screen flex items-center bg-white p-5 lg:p-10 overflow-hidden ">
+    <div className="relative min-h-screen flex items-center bg-white p-5 lg:p-10 overflow-hidden ">
       {data && (
         <div
           key={data.id}

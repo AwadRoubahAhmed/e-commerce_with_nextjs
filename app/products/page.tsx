@@ -15,7 +15,7 @@ export type dataType = {
 };
 
 async function getProducts() {
-  const res = await fetch("http://fakestoreapi.com/products");
+  const res = await fetch("http://localhost:3000/api/datas");
 
   if (!res.ok) {
     throw new Error("Failed to get products !");

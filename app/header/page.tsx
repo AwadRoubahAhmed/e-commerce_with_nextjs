@@ -43,7 +43,12 @@ export default function HeaderNavigation() {
         {/* Rigth */}
         <div>
           <button className="btn btn-primary w-28 text-white p-1 rounded-md">
-            Login <User />
+            <Link
+              href="/header/connection"
+              className="flex justify-center items-center text-base"
+            >
+              Login <User />
+            </Link>
           </button>
         </div>
       </nav>
