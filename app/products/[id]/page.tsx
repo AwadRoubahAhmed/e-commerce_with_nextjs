@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { dataType } from "../page";
 import Link from "next/link";
+import { dataType } from "../page";
 
 type paramsType = {
   params: {
@@ -24,34 +24,49 @@ async function getProductsDetails({ params }: paramsType) {
   return (
     <div className="relative h-screen flex items-center bg-white p-5 lg:p-10 overflow-hidden ">
       {data && (
-        <div className="relative w-full max-w-6xl text-gray-800 rounded shadow-2xl bg-white p-10 lg:p-20 mx-auto">
-          <div>
+        <div
+          key={data.id}
+          className="relative flex flex-col justify-center items-center overflow-hidden p-6 border bg-white text-black shadow-xl rounded-lg mx-auto mt-12"
+        >
+          <div className="aspect-square overflow-hidden">
+            <Image
+              src={data.image}
+              alt={data.title}
+              width={200}
+              height={200}
+              className="w-full h-full object-fill"
+            />
+          </div>
+          {/* sale */}
+          <div className="absolute right-0 top-2 bg-white rounded-full">
+            <p className=" bg-emerald-600 rounded-full p-1 sm:p-1.5 md:p-2 text-white text-[12px] tracking-wide uppercase font-mono">
+              Sale
+            </p>
+          </div>
+          <div className="my-2 mx-auto flex flex-col w-10/12 items-start justify-between">
+            <div className="mb-2 flex">
+              <p className="mr-3 text-sm text-gray-500">${data.price}</p>
+            </div>
+            <h2 className="font-bold font-serif text-sm">{data.title}</h2>
+            <div className="text-gray-700 my-2">
+              <p>
+                {data.description.length > 100
+                  ? `${data.description.slice(0, 100)}...`
+                  : data.description}
+              </p>
+            </div>
             <div>
-              <Image
-                src={data.image}
-                alt=""
-                width={200}
-                height={200}
-                className="mx-auto"
-              />
+              <p>Rate: {data.rating.rate}</p>
+            </div>
+            <div>
+              <p>Count: {data.rating.count}</p>
             </div>
           </div>
-          <div>
+          <button className="btn btn-primary w-full font-bold text-base text-white my-2 overflow-hidden">
             <div>
-              <h2 className="font-bold font-serif text-sm"> {data.title} </h2>
-              <p className="mr-3 text-sm text-gray-500">{data.description}</p>
+              <Link href={`/products/${data.id}`}>Add</Link>
             </div>
-            <div>
-              <div>
-                <span>${data.price}</span>
-              </div>
-            </div>
-            <button className="btn btn-primary w-full font-bold text-base text-white my-2 overflow-hidden">
-              <div>
-                <Link href={`/products`}>Details</Link>
-              </div>
-            </button>
-          </div>
+          </button>
         </div>
       )}
     </div>
