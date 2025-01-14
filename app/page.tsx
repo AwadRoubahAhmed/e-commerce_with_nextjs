@@ -27,7 +27,7 @@ export default function Home() {
             <div>
               <Link
                 href="products"
-                className="w-52 btn btn-primary text-white p-2 rounded-md"
+                className="w-52 btn btn-primary text-white text-lg p-2 rounded-md"
               >
                 Products
               </Link>

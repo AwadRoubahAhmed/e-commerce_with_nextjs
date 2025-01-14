@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import logo from "../../public/logo.png";
+import { User } from "lucide-react";
 
 export default function HeaderNavigation() {
   return (
-    <div className="container w-full mx-auto">
+    <div className="container max-w-full">
       <nav className="w-full h-20 flex justify-between items-center p-6 bg-white dark:bg-gray-800 text-white shadow-slate-950">
         {/* Left */}
         <div>
@@ -41,8 +42,8 @@ export default function HeaderNavigation() {
         </div>
         {/* Rigth */}
         <div>
-          <button className="btn btn-primary text-white p-1 rounded-md">
-            Login/Sing Up
+          <button className="btn btn-primary w-28 text-white p-1 rounded-md">
+            Login <User />
           </button>
         </div>
       </nav>

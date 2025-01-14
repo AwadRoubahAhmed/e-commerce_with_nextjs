@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
-type datasType = {
-  id: number;
+export type dataType = {
+  id: string;
   title: string;
   price: number;
   description: string;
@@ -15,7 +15,7 @@ type datasType = {
 };
 
 async function getProducts() {
-  const res = await fetch("https://fakestoreapi.com/products");
+  const res = await fetch("http://fakestoreapi.com/products");
 
   if (!res.ok) {
     throw new Error("Failed to get products !");
@@ -23,8 +23,9 @@ async function getProducts() {
   return res.json();
 }
 
-export default async function ProductsPage() {
+async function ProductsPage() {
   const data = await getProducts();
+
   return (
     <main>
       <div className="py-12 sm:py-16 lg:py-20 bg-white min-h-screen">
@@ -36,7 +37,7 @@ export default async function ProductsPage() {
           </div>
           {/* Products */}
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-10">
-            {data.map((product: datasType) => (
+            {data.map((product: dataType) => (
               <div
                 key={product.id}
                 className="relative flex flex-col justify-center items-center overflow-hidden p-6 border bg-white text-black shadow-xl rounded-lg mx-auto"
@@ -62,10 +63,14 @@ export default async function ProductsPage() {
                       ${product.price}
                     </p>
                   </div>
-                  <h2 className="font-bold font-serif text-sm">{product.title}</h2>
+                  <h2 className="font-bold font-serif text-sm">
+                    {product.title}
+                  </h2>
                 </div>
                 <button className="btn btn-primary w-full font-bold text-base text-white my-2 overflow-hidden">
-                  <Link href="/products">Details</Link>
+                  <div>
+                    <Link href={`/products/${product.id}`}>Details</Link>
+                  </div>
                 </button>
               </div>
             ))}
@@ -75,3 +80,4 @@ export default async function ProductsPage() {
     </main>
   );
 }
+export default ProductsPage;
