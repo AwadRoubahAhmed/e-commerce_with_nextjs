@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link";
 import { useState } from "react";
 
@@ -19,19 +20,21 @@ function ConnectionPage() {
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     // TODO: Send the form data to the server for authentication
-    console.log(`Email: ${email}, Password: ${password}`);
+    // console.log(`Email: ${email}, Password: ${password}`);
+
+    
   };
 
   //Affichage(render)
   return (
     <div className="container bg-white">
-      <div className="w-1/2 flex justify-center items-center h-screen text-gray-800 mx-auto">
+      <div className="max-w-full flex justify-center items-center h-screen text-gray-800 mx-auto">
         <form
           onSubmit={handleSubmit}
-          className="w-full text-white bg-white p-12 rounded-lg shadow-2xl"
+          className="max-w-6xl text-white bg-white p-12 rounded-lg shadow-2xl"
         >
           <h2 className="max-w-md text-center text-2xl text-black font-bold font-serif contrast-50 mb-4">
-            Connectez-vous {" "}
+            Connectez-vous{" "}
           </h2>
 
           <label className="input input-bordered flex items-center gap-2 mb-4">
@@ -87,7 +90,9 @@ function ConnectionPage() {
           <div className="mt-4">
             <p className="text-gray-800 font-bold">
               Pas encore de compte?{" "}
-              <Link href="/header/inscription" className="underline">Créer un compte</Link>
+              <Link href="/header/inscription" className="underline">
+                Créer un compte
+              </Link>
             </p>
           </div>
         </form>

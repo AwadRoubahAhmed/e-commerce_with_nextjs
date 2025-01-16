@@ -9,13 +9,13 @@ function InscriptionPage() {
   //Affichage(render)
   return (
     <div className="container bg-white">
-      <div className="w-1/2 flex justify-center items-center h-screen text-gray-800 mx-auto">
-        <form className="w-full flex flex-col justify-center items-center text-white bg-white p-12 rounded-lg shadow-2xl">
+      <div className="w-full flex justify-center items-center h-screen text-gray-800 mx-auto">
+        <form className="w-96 flex flex-col justify-center items-center text-white bg-white p-8 rounded-lg shadow-2xl">
           <h2 className="max-w-md text-center text-2xl text-black font-bold font-serif contrast-50 mb-4">
-            S'inscrire{" "}
+            S inscrire{" "}
           </h2>
 
-          <label className="input input-bordered w-full flex items-center gap-2  mb-4">
+          <label className="input input-bordered w-full flex items-center gap-2 mb-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
@@ -69,7 +69,7 @@ function InscriptionPage() {
           </label>
           <button className="w-full btn btn-primary font-bold text-base text-white my-2 overflow-hidden">
             <div>
-              <Link href={`/products`}>S'inscrire</Link>
+              <Link href={`/products`}>s inscrire</Link>
             </div>
           </button>
         </form>

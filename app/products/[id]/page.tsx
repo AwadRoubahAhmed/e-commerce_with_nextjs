@@ -1,8 +1,8 @@
+import { DataType } from "@/app/appTypes";
 import Image from "next/image";
 import Link from "next/link";
-import { dataType } from "../page";
 
-type paramsType = {
+export type paramsType = {
   params: {
     id: string;
   };
@@ -19,7 +19,7 @@ async function getProducts({ params }: paramsType) {
 }
 
 async function getProductsDetails({ params }: paramsType) {
-  const data: dataType = await getProducts({ params });
+  const data: DataType = await getProducts({ params });
 
   return (
     <div className="relative min-h-screen flex items-center bg-white p-5 lg:p-10 overflow-hidden ">
@@ -45,7 +45,7 @@ async function getProductsDetails({ params }: paramsType) {
           </div>
           <div className="my-2 mx-auto flex flex-col w-10/12 items-start justify-between">
             <div className="mb-2 flex">
-              <p className="mr-3 text-sm text-gray-500">${data.price}</p>
+              <p className="mr-3 text-sm text-red-500">${data.price}</p>
             </div>
             <h2 className="font-bold font-serif text-sm">{data.title}</h2>
             <div className="text-gray-700 my-2">
@@ -64,7 +64,7 @@ async function getProductsDetails({ params }: paramsType) {
           </div>
           <button className="btn btn-primary w-full font-bold text-base text-white my-2 overflow-hidden">
             <div>
-              <Link href={`/products/${data.id}`}>Add</Link>
+              <Link href={`../header/connection ${data.id}`}>Add</Link>
             </div>
           </button>
         </div>

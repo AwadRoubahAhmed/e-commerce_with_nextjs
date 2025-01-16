@@ -5,8 +5,8 @@ import { User } from "lucide-react";
 
 export default function HeaderNavigation() {
   return (
-    <div className="container max-w-full">
-      <nav className="w-full h-20 flex justify-between items-center p-6 bg-white dark:bg-gray-800 text-white shadow-slate-950">
+    <header className="sticky top-0 z-50 bg-white shadow-2xl ">
+      <nav className="container flex sm:flex-wrap justify-between items-center p-2  ">
         {/* Left */}
         <div>
           <Link href="/">
@@ -15,7 +15,8 @@ export default function HeaderNavigation() {
               alt="logo"
               width={70}
               height={70}
-              className="bg-white dark:bg-gray-400 rounded-full mx-auto"
+             
+              className="dark:bg-white rounded-full mx-auto"
             />
           </Link>
         </div>
@@ -25,7 +26,7 @@ export default function HeaderNavigation() {
             <li>
               <Link
                 href="/"
-                className="text-gray-300 text-base hover:text-gray-500"
+                className="text-gray-800 text-lg hover:text-gray-500 font-medium"
               >
                 Home
               </Link>
@@ -33,7 +34,7 @@ export default function HeaderNavigation() {
             <li>
               <Link
                 href="/products"
-                className="text-gray-300 text-base hover:text-gray-500"
+                className="text-gray-800 text-lg hover:text-gray-500 font-medium"
               >
                 Products
               </Link>
@@ -52,6 +53,6 @@ export default function HeaderNavigation() {
           </button>
         </div>
       </nav>
-    </div>
+    </header>
   );
 }

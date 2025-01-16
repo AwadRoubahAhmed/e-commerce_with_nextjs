@@ -1,18 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
+import { DataType } from "../appTypes";
 
-export type dataType = {
-  id: string;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
-  rating: {
-    rate: number;
-    count: number;
-  };
-};
+
 
 async function getProducts() {
   const res = await fetch("http://localhost:3000/api/datas");
@@ -37,7 +27,7 @@ async function ProductsPage() {
           </div>
           {/* Products */}
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-10">
-            {data.map((product: dataType) => (
+            {data.map((product: DataType) => (
               <div
                 key={product.id}
                 className="relative flex flex-col justify-center items-center overflow-hidden p-6 border bg-white text-black shadow-xl rounded-lg mx-auto"
@@ -59,7 +49,7 @@ async function ProductsPage() {
                 </div>
                 <div className="my-2 mx-auto flex flex-col w-10/12 items-start justify-between">
                   <div className="mb-2 flex">
-                    <p className="mr-3 text-sm text-gray-500">
+                    <p className="mr-3 text-sm text-red-500">
                       ${product.price}
                     </p>
                   </div>
