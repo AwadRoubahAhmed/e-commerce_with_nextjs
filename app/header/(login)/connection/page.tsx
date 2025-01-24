@@ -1,28 +1,29 @@
 "use client";
 
+import { useFilter } from "@/app/context/Context";
 import Link from "next/link";
-import { useState } from "react";
 
 function ConnectionPage() {
   //State
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<number>();
+  const { email, setEmail, password, setPassword } = useFilter();
 
   //Comportement
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(event.target.value);
     setEmail(event.target.value);
   };
 
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(Number(event.target.value));
+    const value = event.target.value;
+    console.log(value);
+    setPassword(parseFloat(value));
   };
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     // TODO: Send the form data to the server for authentication
-    // console.log(`Email: ${email}, Password: ${password}`);
 
-    
+    console.log(`Email: ${email}, Password: ${password}`);
   };
 
   //Affichage(render)
@@ -51,7 +52,7 @@ function ConnectionPage() {
               type="text"
               className="grow"
               placeholder="Email..."
-              value={email}
+              value={email || ""}
               onChange={handleEmailChange}
             />
           </label>
@@ -73,7 +74,7 @@ function ConnectionPage() {
               type="password"
               className="grow"
               placeholder="password..."
-              value={password}
+              value={password || ""}
               onChange={handlePasswordChange}
             />
           </label>
@@ -82,7 +83,10 @@ function ConnectionPage() {
               <Link href={`/forgot_password`}>Mot de passe oublié?</Link>
             </p>
           </div>
-          <button className="w-full btn btn-primary font-bold text-base text-white my-2 overflow-hidden">
+          <button
+            type="submit"
+            className="w-full btn btn-primary font-bold text-base text-white my-2 overflow-hidden"
+          >
             <div>
               <Link href={`/products`}>Se Connecter</Link>
             </div>
