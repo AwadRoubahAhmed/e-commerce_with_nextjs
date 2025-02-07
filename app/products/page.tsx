@@ -2,8 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { DataType } from "../appTypes";
 
-
-
 async function getProducts() {
   const res = await fetch("http://localhost:3000/api/datas");
 
@@ -22,7 +20,7 @@ async function ProductsPage() {
         <div className="mx-auto max-w-screen-xl sm:py-6 lg:py-8">
           <div className="mx-auto max-w-md text-center">
             <h1 className="max-w-md text-center text-2xl text-black font-bold font-serif contrast-50">
-              All Products{" "}
+              All Products
             </h1>
           </div>
           {/* Products */}

@@ -139,7 +139,7 @@ function InscriptionPage() {
           </label>
           <button className="w-full btn btn-primary font-bold text-base text-white my-2 overflow-hidden">
             <div>
-              <Link href={`/products`}>s inscrire</Link>
+              <Link href={`/products`}>S inscrire</Link>
             </div>
           </button>
         </form>

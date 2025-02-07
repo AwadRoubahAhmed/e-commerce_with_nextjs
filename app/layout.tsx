@@ -30,6 +30,9 @@ export default function RootLayout({
       >
         <HeaderNavigation />
         {children}
+        <footer className="w-full h-16 bg-slate-900 text-slate-100/90 p-4">
+          <p className="text-center">�� 2023 E-commerce Next App</p>
+        </footer>
       </body>
     </html>
   );

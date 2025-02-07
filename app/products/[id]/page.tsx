@@ -1,6 +1,7 @@
 import { DataType } from "@/app/appTypes";
 import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 export type paramsType = {
   params: {
@@ -20,6 +21,11 @@ async function getProducts({ params }: paramsType) {
 
 async function getProductsDetails({ params }: paramsType) {
   const data: DataType = await getProducts({ params });
+
+  // Check if product id is valid (between 1 and 20)
+  if (parseInt(params.id) > 20) {
+    notFound();
+  }
 
   return (
     <div className="relative min-h-screen flex items-center bg-white p-5 lg:p-10 overflow-hidden ">

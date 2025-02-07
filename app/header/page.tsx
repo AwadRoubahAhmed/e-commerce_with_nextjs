@@ -8,7 +8,7 @@ import { ContextProvider } from "../context/Context";
 export default function HeaderNavigation() {
   return (
     <ContextProvider>
-      <header className="sticky top-0 z-50 bg-white border-b-2 shadow-2xl ">
+      <header className="w-full h-16 sticky top-0 z-50 bg-white border-b-2 shadow-2xl ">
         <nav className="container flex sm:flex-wrap justify-between items-center p-2  ">
           {/* Left */}
           <div>
@@ -16,19 +16,19 @@ export default function HeaderNavigation() {
               <Image
                 src={logo}
                 alt="logo"
-                width={70}
-                height={70}
+                width={50}
+                height={50}
                 className="dark:bg-white rounded-full mx-auto"
               />
             </Link>
           </div>
           {/* Center */}
-          <div className="flex ">
+          <div className="flex">
             <ul className="flex space-x-5">
               <li>
                 <Link
                   href="/"
-                  className="text-gray-800 text-lg hover:text-blue-400 font-medium"
+                  className="text-gray-800 text-lg hover:text-blue-400  font-bold"
                 >
                   Home
                 </Link>
@@ -36,7 +36,7 @@ export default function HeaderNavigation() {
               <li>
                 <Link
                   href="/products"
-                  className="text-gray-800 text-lg hover:text-blue-400 font-medium"
+                  className="text-gray-800 text-lg hover:text-blue-400  font-bold"
                 >
                   Products
                 </Link>
