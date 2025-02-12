@@ -18,7 +18,7 @@ async function getProducts({ params }: paramsType) {
   }
   return res.json();
 }
-
+ 
 async function getProductsDetails({ params }: paramsType) {
   const data: DataType = await getProducts({ params });
 
