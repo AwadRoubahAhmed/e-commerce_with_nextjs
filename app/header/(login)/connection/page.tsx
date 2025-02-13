@@ -32,7 +32,7 @@ function ConnectionPage() {
       <div className="max-w-full flex justify-center items-center h-screen text-gray-800 mx-auto">
         <form
           onSubmit={handleSubmit}
-          className="max-w-6xl text-white bg-white p-12 rounded-lg shadow-2xl"
+          className="max-w-6xl text-white bg-white p-8 rounded-lg shadow-2xl"
         >
           <h2 className="max-w-md text-center text-2xl text-black font-bold font-serif contrast-50 mb-4">
             Connectez-vous{" "}

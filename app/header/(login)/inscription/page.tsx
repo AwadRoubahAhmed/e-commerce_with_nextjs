@@ -58,7 +58,7 @@ function InscriptionPage() {
           className="w-96 flex flex-col justify-center items-center text-white bg-white p-8 rounded-lg shadow-2xl"
         >
           <h2 className="max-w-md text-center text-2xl text-black font-bold font-serif contrast-50 mb-4">
-            S inscrire{" "}
+            S inscrire
           </h2>
 
           <label className="input input-bordered w-full flex items-center gap-2 mb-4">

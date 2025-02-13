@@ -1,22 +1,62 @@
 "use client";
-import React, { useState } from "react";
+import { FaCartArrowDown } from "react-icons/fa6";
 
-type cartItemsProps = {
-  id: number;
-  name: string;
-  price: number;
-  quantity: number;
-};
-
-const CartComponent = () => {
+const CartComponent: React.FC = () => {
   // State;
-  const [cartItems, setCartItems] = useState<cartItemsProps[]>([]);
 
   // Comportements;
 
   // Affichage(render);
   return (
-    <div>
+    <div className="drawer drawer-end">
+      <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+      <div className="drawer-content">
+        {/* Page content here */}
+        <label
+          htmlFor="my-drawer-4"
+          className="relative drawer-button btn btn-primary text-gray-100 rounded-full"
+        >
+          <FaCartArrowDown className="w-6 h-6" />
+          <span className="absolute top-1 right-2 text-gray-100/90">0</span>
+        </label>
+      </div>
+
+      <div className="drawer-side">
+        <label
+          htmlFor="my-drawer-4"
+          aria-label="close sidebar"
+          className="drawer-overlay"
+        ></label>
+        <div className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+          {/* Sidebar content here */}
+          <div className="card-body">
+            <span className="text-xl font-bold text-gray-100/90 mb-3">0 Items</span>
+            <span className="text-info mb-3">Subtotal: $0</span>
+            <div className="card-actions">
+              <button className="btn btn-primary btn-block">View cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default CartComponent;
+
+//////////////////////////////////////////
+{
+  /* 
+
+ 
+  
+  
+  
+  
+  
+  
+  /////////////////////////////////
+  // <div>
       {" "}
       <div className="dropdown dropdown-end">
         <div
@@ -57,8 +97,24 @@ const CartComponent = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
-};
-
-export default CartComponent;
+    </div> 
+    
+    ///////////////////////////////
+    // 
+    // <div className="flex items-center gap-2">
+        <button
+          onClick={toggleCartItemOpen}
+          className="w-12 h-12 flex justify-center items-center p-2 rounded-full text-gray-100 bg-blue-500 hover:bg-blue-600  relative cursor-pointer"
+        >
+          <span
+            className="absolute top-0 right-0 bg-red-500 rounded-full p-1 text-[11px] flex justify-center items-center
+         w-4 h-4"
+          >
+            0
+          </span>
+          <FaCartShopping />
+        </button>
+      </div>
+    // 
+    // */
+}

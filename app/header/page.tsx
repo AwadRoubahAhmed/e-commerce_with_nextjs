@@ -11,9 +11,11 @@ import CartComponent from "../components/cart/page";
 export default function HeaderNavigation() {
   // State;
   const [showMenu, setShowMenu] = useState<boolean>(false);
+  // const [cartItemOpen, setCartItemOpen] = useState<boolean>(false);
 
   // Comportement;
   const toggleMenu = () => setShowMenu(!showMenu);
+  // const toggleCartItemOpen = () => setCartItemOpen(!cartItemOpen);
 
   //Affichage(render)
   return (
@@ -21,16 +23,15 @@ export default function HeaderNavigation() {
       <header className="container w-full min-h-16 sticky top-0 z-50 flex sm:flex-wrap justify-between items-center p-4 bg-white border-b-2 shadow-2xl ">
         {/* Left Logo  */}
         <div>
-          <Link
-            href="/"
-            className="flex justify-center items-center font-bold text-2xl text-gray-800"
-          >
+          <Link href="/" className="flex justify-center items-center">
             <Image
               src={logo}
               alt="logo"
               className="dark:bg-white rounded-full mx-auto w-8 h-8"
             />
-            <span>Shop Store</span>
+            <span className="font-bold text-xl text-gray-800">
+              Shop Store <strong className="text-blue-500">.</strong>
+            </span>
           </Link>
         </div>
         {/* Center Navigation Menu */}
@@ -58,7 +59,7 @@ export default function HeaderNavigation() {
         {/* Rigth */}
         <div className="hidden md:flex space-x-8">
           {/* Right Side cart*/}
-          <div>
+          <div className="block">
             <CartComponent />
           </div>
 
@@ -102,7 +103,7 @@ export default function HeaderNavigation() {
             <li className="mb-2">
               <Link
                 href="/"
-                className="w-full text-gray-100/90 text-lg hover:bg-blue-400 font-bold rounded-md"
+                className="w-full text-gray-100/90 text-lg hover:text-blue-400 font-bold rounded-md"
               >
                 Home
               </Link>
@@ -110,7 +111,7 @@ export default function HeaderNavigation() {
             <li>
               <Link
                 href="/products"
-                className="w-full text-gray-100/90 text-lg hover:bg-blue-400 font-bold rounded-md"
+                className="w-full text-gray-100/90 text-lg hover:text-blue-400 font-bold rounded-md"
               >
                 Products
               </Link>

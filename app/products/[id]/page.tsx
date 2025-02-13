@@ -1,4 +1,5 @@
 import { DataType } from "@/app/appTypes";
+import CartComponent from "@/app/components/cart/page";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -18,8 +19,9 @@ async function getProducts({ params }: paramsType) {
   }
   return res.json();
 }
- 
+
 async function getProductsDetails({ params }: paramsType) {
+  // Fetch product data from the API
   const data: DataType = await getProducts({ params });
 
   // Check if product id is valid (between 1 and 20)
@@ -51,7 +53,9 @@ async function getProductsDetails({ params }: paramsType) {
           </div>
           <div className="my-2 mx-auto flex flex-col w-10/12 items-start justify-between">
             <div className="mb-2 flex">
-              <p className="mr-3 text-sm text-red-500">${data.price}</p>
+              <p className="mr-3 text-md font-bold text-red-500">
+                ${data.price}
+              </p>
             </div>
             <h2 className="font-bold font-serif text-sm">{data.title}</h2>
             <div className="text-gray-700 my-2">
@@ -70,7 +74,7 @@ async function getProductsDetails({ params }: paramsType) {
           </div>
           <button className="btn btn-primary w-full font-bold text-base text-white my-2 overflow-hidden">
             <div>
-              <Link href={`../header/connection ${data.id}`}>Add</Link>
+              <Link href="../components/cart">Add to cart</Link>
             </div>
           </button>
         </div>
