@@ -1,15 +1,26 @@
-import { createContext, useContext, useState } from "react";
+"use client";
+import {
+  createContext,
+  Dispatch,
+  SetStateAction,
+  useContext,
+  useState,
+} from "react";
 
 //types
 type ContextPropsType = {
   firstName: string;
-  setFirstName: (name: string) => void;
+  setFirstName: Dispatch<SetStateAction<string>>;
   name: string;
-  setName: (name: string) => void;
+  setName: Dispatch<SetStateAction<string>>;
   email: string;
-  setEmail: (event: string) => void;
+  setEmail: Dispatch<SetStateAction<string>>;
   password: number;
-  setPassword: (event: number) => void;
+  setPassword: Dispatch<SetStateAction<number>>;
+  showCart: boolean;
+  setShowCart: Dispatch<SetStateAction<boolean>>;
+  showMenu: boolean;
+  setShowMenu: Dispatch<SetStateAction<boolean>>;
 };
 
 /////////////////////////////////////// 1 ////////////////////////////////////////
@@ -21,6 +32,10 @@ export const Context = createContext<ContextPropsType>({
   name: "",
   setName: () => {},
   email: "",
+  showCart: false,
+  showMenu: false,
+  setShowMenu: () => {},
+  setShowCart: () => {},
   setEmail: () => {},
   password: 0,
   setPassword: () => {},
@@ -33,10 +48,16 @@ export const ContextProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   // Déclaration des états dans le ContextProvider et leurs initialisations.
+
+  {
+    /* States */
+  }
   const [firstName, setFirstName] = useState<string>("");
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<number>(0);
+  const [showMenu, setShowMenu] = useState<boolean>(false);
+  const [showCart, setShowCart] = useState<boolean>(false);
 
   // Définition des valeurs dans le ContextProvider.
   return (
@@ -50,6 +71,10 @@ export const ContextProvider: React.FC<{ children: React.ReactNode }> = ({
         setEmail,
         password,
         setPassword,
+        showCart,
+        setShowCart,
+        showMenu,
+        setShowMenu,
       }}
     >
       {children}

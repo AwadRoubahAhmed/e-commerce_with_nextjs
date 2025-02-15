@@ -2,24 +2,24 @@
 import Image from "next/image";
 import Link from "next/link";
 import logo from "../../public/logo.png";
-import { User } from "lucide-react";
-import { ContextProvider } from "../context/Context";
+import { useFilter } from "../context/Context";
 import { IoMdMenu, IoMdClose } from "react-icons/io";
-import { useState } from "react";
+
 import CartComponent from "../components/cart/page";
+
+import CardSideBar from "../card/page";
+import { User } from "lucide-react";
 
 export default function HeaderNavigation() {
   // State;
-  const [showMenu, setShowMenu] = useState<boolean>(false);
-  // const [cartItemOpen, setCartItemOpen] = useState<boolean>(false);
+  const { showMenu, setShowMenu, showCart } = useFilter();
 
   // Comportement;
   const toggleMenu = () => setShowMenu(!showMenu);
-  // const toggleCartItemOpen = () => setCartItemOpen(!cartItemOpen);
 
   //Affichage(render)
   return (
-    <ContextProvider>
+    <>
       <header className="container w-full min-h-16 sticky top-0 z-50 flex sm:flex-wrap justify-between items-center p-4 bg-white border-b-2 shadow-2xl ">
         {/* Left Logo  */}
         <div>
@@ -128,7 +128,6 @@ export default function HeaderNavigation() {
                 Login <User />
               </Link>
             </div>
-
             {/* Right Side Panier*/}
             <div>
               <CartComponent />
@@ -136,7 +135,8 @@ export default function HeaderNavigation() {
           </div>
         </div>
       </header>
-    </ContextProvider>
+      {showCart && <CardSideBar />}
+    </>
   );
 }
 

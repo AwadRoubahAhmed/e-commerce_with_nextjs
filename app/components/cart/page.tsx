@@ -4,39 +4,21 @@ import { FaCartArrowDown } from "react-icons/fa6";
 const CartComponent: React.FC = () => {
   // State;
 
-  // Comportements;
+  // Comportement;
+  //const handleClickShowCart = () => setShowCart(!showCart);
 
   // Affichage(render);
   return (
     <div className="drawer drawer-end">
-      <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
         {/* Page content here */}
-        <label
-          htmlFor="my-drawer-4"
+        <button
+          type="button"
           className="relative drawer-button btn btn-primary text-gray-100 rounded-full"
         >
           <FaCartArrowDown className="w-6 h-6" />
           <span className="absolute top-1 right-2 text-gray-100/90">0</span>
-        </label>
-      </div>
-
-      <div className="drawer-side">
-        <label
-          htmlFor="my-drawer-4"
-          aria-label="close sidebar"
-          className="drawer-overlay"
-        ></label>
-        <div className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
-          {/* Sidebar content here */}
-          <div className="card-body">
-            <span className="text-xl font-bold text-gray-100/90 mb-3">0 Items</span>
-            <span className="text-info mb-3">Subtotal: $0</span>
-            <div className="card-actions">
-              <button className="btn btn-primary btn-block">View cart</button>
-            </div>
-          </div>
-        </div>
+        </button>
       </div>
     </div>
   );
