@@ -4,24 +4,24 @@ import Link from "next/link";
 import logo from "../../public/logo.png";
 import { useFilter } from "../context/Context";
 import { IoMdMenu, IoMdClose } from "react-icons/io";
-
-import CartComponent from "../components/cart/page";
-
 import CardSideBar from "../card/page";
 import { User } from "lucide-react";
+import { FaCartArrowDown } from "react-icons/fa6";
 
 export default function HeaderNavigation() {
   // State;
-  const { showMenu, setShowMenu, showCart } = useFilter();
+  const { showMenu, setShowMenu, showCart, setShowCart } = useFilter();
 
   // Comportement;
   const toggleMenu = () => setShowMenu(!showMenu);
+
+  const handleClickShowCart = () => setShowCart(!showCart);
 
   //Affichage(render)
   return (
     <>
       <header className="container w-full min-h-16 sticky top-0 z-50 flex sm:flex-wrap justify-between items-center p-4 bg-white border-b-2 shadow-2xl ">
-        {/* Left Logo  */}
+        {/* Left Logo // sticky top-0 z-50 */}
         <div>
           <Link href="/" className="flex justify-center items-center">
             <Image
@@ -40,7 +40,7 @@ export default function HeaderNavigation() {
             <li>
               <Link
                 href="/"
-                className="text-gray-800 text-lg hover:text-blue-400  font-bold"
+                className="text-gray-800 text-lg hover:text-blue-400 font-bold"
               >
                 Home
               </Link>
@@ -48,7 +48,7 @@ export default function HeaderNavigation() {
             <li>
               <Link
                 href="/products"
-                className="text-gray-800 text-lg hover:text-blue-400  font-bold"
+                className="text-gray-800 text-lg hover:text-blue-400 font-bold"
               >
                 Products
               </Link>
@@ -60,7 +60,16 @@ export default function HeaderNavigation() {
         <div className="hidden md:flex space-x-8">
           {/* Right Side cart*/}
           <div className="block">
-            <CartComponent />
+            <button
+              onClick={handleClickShowCart}
+              type="button"
+              className="relative drawer-button btn btn-primary text-gray-100 rounded-full"
+            >
+              <FaCartArrowDown className="w-6 h-6" />
+              <span className="absolute bottom-1 right-2 text-red-700 text-base">
+                0
+              </span>
+            </button>
           </div>
 
           {/* Right Side Login */}
@@ -130,7 +139,16 @@ export default function HeaderNavigation() {
             </div>
             {/* Right Side Panier*/}
             <div>
-              <CartComponent />
+              <button
+                onClick={handleClickShowCart}
+                type="button"
+                className="relative drawer-button btn btn-primary text-gray-100 rounded-full"
+              >
+                <FaCartArrowDown className="w-6 h-6" />
+                <span className="absolute top-1 right-2 text-gray-100/90">
+                  0
+                </span>
+              </button>
             </div>
           </div>
         </div>

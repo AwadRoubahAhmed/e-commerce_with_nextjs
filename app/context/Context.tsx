@@ -6,6 +6,7 @@ import {
   useContext,
   useState,
 } from "react";
+import { DataType } from "../types";
 
 //types
 type ContextPropsType = {
@@ -21,6 +22,13 @@ type ContextPropsType = {
   setShowCart: Dispatch<SetStateAction<boolean>>;
   showMenu: boolean;
   setShowMenu: Dispatch<SetStateAction<boolean>>;
+  quantity: number;
+  setQuantity: Dispatch<SetStateAction<number>>;
+  cartItems: DataType[];
+  setCartItems: Dispatch<SetStateAction<DataType[]>>;
+  incrementQuantity: Dispatch<SetStateAction<number>>;
+  decrementQuantity: Dispatch<SetStateAction<number>>;
+  addProductToCart: (data: DataType, quantity: number) => void;
 };
 
 /////////////////////////////////////// 1 ////////////////////////////////////////
@@ -39,6 +47,17 @@ export const Context = createContext<ContextPropsType>({
   setEmail: () => {},
   password: 0,
   setPassword: () => {},
+  quantity: 0,
+  setQuantity: () => {},
+  cartItems: [],
+  setCartItems: () => {},
+  incrementQuantity: () => {
+    return Number;
+  },
+  decrementQuantity: () => {
+    return Number;
+  },
+  addProductToCart: (data: DataType, quantity: number) => {},
 });
 
 /////////////////////////////////////// 2 ////////////////////////////////////////
@@ -58,6 +77,22 @@ export const ContextProvider: React.FC<{ children: React.ReactNode }> = ({
   const [password, setPassword] = useState<number>(0);
   const [showMenu, setShowMenu] = useState<boolean>(false);
   const [showCart, setShowCart] = useState<boolean>(false);
+  const [quantity, setQuantity] = useState<number>(1);
+  const [cartItems, setCartItems] = useState<DataType[]>([]);
+
+  // Comportement;
+  const addProductToCart = (data: DataType, quantity: number) => {
+    // Add product to cart logic here
+    //...
+    setCartItems([...cartItems, { ...data }]);
+  };
+  const incrementQuantity = () => setQuantity((prev) => prev + 1);
+  const decrementQuantity = () => {
+    setQuantity((prev) => {
+      if (prev - 1 < 1) return 1;
+      return prev - 1;
+    });
+  };
 
   // Définition des valeurs dans le ContextProvider.
   return (
@@ -75,6 +110,13 @@ export const ContextProvider: React.FC<{ children: React.ReactNode }> = ({
         setShowCart,
         showMenu,
         setShowMenu,
+        quantity,
+        setQuantity,
+        cartItems,
+        setCartItems,
+        incrementQuantity,
+        decrementQuantity,
+        addProductToCart,
       }}
     >
       {children}

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { DataType } from "../appTypes";
+import { DataType } from "../types";
 
 async function getProducts() {
   const res = await fetch("http://localhost:3000/api/datas");
