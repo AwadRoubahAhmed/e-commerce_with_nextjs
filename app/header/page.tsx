@@ -10,7 +10,8 @@ import { FaCartArrowDown } from "react-icons/fa6";
 
 export default function HeaderNavigation() {
   // State;
-  const { showMenu, setShowMenu, showCart, setShowCart } = useFilter();
+  const { showMenu, setShowMenu, showCart, setShowCart, totalQuantity } =
+    useFilter();
 
   // Comportement;
   const toggleMenu = () => setShowMenu(!showMenu);
@@ -67,7 +68,7 @@ export default function HeaderNavigation() {
             >
               <FaCartArrowDown className="w-6 h-6" />
               <span className="absolute bottom-1 right-2 text-red-700 text-base">
-                0
+                {totalQuantity}
               </span>
             </button>
           </div>

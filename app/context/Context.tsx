@@ -26,9 +26,13 @@ type ContextPropsType = {
   setQuantity: Dispatch<SetStateAction<number>>;
   cartItems: DataType[];
   setCartItems: Dispatch<SetStateAction<DataType[]>>;
-  incrementQuantity: Dispatch<SetStateAction<number>>;
-  decrementQuantity: Dispatch<SetStateAction<number>>;
+  incrementQuantity: () => void;
+  decrementQuantity: () => void;
   addProductToCart: (data: DataType, quantity: number) => void;
+  totalQuantity: number;
+  setTotalQuantity: () => void;
+  totalPrice: number;
+  setTotalPrice: () => void;
 };
 
 /////////////////////////////////////// 1 ////////////////////////////////////////
@@ -51,13 +55,13 @@ export const Context = createContext<ContextPropsType>({
   setQuantity: () => {},
   cartItems: [],
   setCartItems: () => {},
-  incrementQuantity: () => {
-    return Number;
-  },
-  decrementQuantity: () => {
-    return Number;
-  },
-  addProductToCart: (data: DataType, quantity: number) => {},
+  incrementQuantity: () => {},
+  decrementQuantity: () => {},
+  addProductToCart: () => {},
+  totalQuantity: 0,
+  setTotalQuantity: () => {},
+  totalPrice: 0,
+  setTotalPrice: () => {},
 });
 
 /////////////////////////////////////// 2 ////////////////////////////////////////
@@ -79,14 +83,36 @@ export const ContextProvider: React.FC<{ children: React.ReactNode }> = ({
   const [showCart, setShowCart] = useState<boolean>(false);
   const [quantity, setQuantity] = useState<number>(1);
   const [cartItems, setCartItems] = useState<DataType[]>([]);
+  const [totalQuantity, setTotalQuantity] = useState<number>(0);
+  const [totalPrice, setTotalPrice] = useState<number>(0);
 
   // Comportement;
   const addProductToCart = (data: DataType, quantity: number) => {
     // Add product to cart logic here
     //...
-    setCartItems([...cartItems, { ...data }]);
+
+    // Check quantity in cartItem;
+    const checkProductInCart = cartItems.find((item) => item.id === data.id);
+    setTotalQuantity((prev) => prev + quantity);
+    setTotalPrice((prev) => prev + data.price * quantity);
+
+    if (checkProductInCart) {
+      const updatedCartItems = cartItems.map((cartProduct) => {
+        if (cartProduct.id === data.id) {
+          return { ...cartProduct, quantity: cartProduct.quantity + quantity };
+        } else {
+          return cartProduct;
+        }
+      });
+
+      setCartItems(updatedCartItems);
+    } else {
+      data.quantity = quantity;
+      setCartItems([...cartItems, { ...data }]);
+    }
   };
-  const incrementQuantity = () => setQuantity((prev) => prev + 1);
+  const incrementQuantity = () => setQuantity(quantity + 1);
+  //setQuantity((prev) => prev + 1);
   const decrementQuantity = () => {
     setQuantity((prev) => {
       if (prev - 1 < 1) return 1;
@@ -117,6 +143,10 @@ export const ContextProvider: React.FC<{ children: React.ReactNode }> = ({
         incrementQuantity,
         decrementQuantity,
         addProductToCart,
+        totalQuantity,
+        setTotalQuantity: () => {},
+        totalPrice,
+        setTotalPrice: () => {},
       }}
     >
       {children}
