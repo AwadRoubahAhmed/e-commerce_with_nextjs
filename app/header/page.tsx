@@ -21,82 +21,91 @@ export default function HeaderNavigation() {
   //Affichage(render)
   return (
     <>
-      <header className="container w-full min-h-16 sticky top-0 z-50 flex sm:flex-wrap justify-between items-center p-4 bg-white border-b-2 shadow-2xl ">
-        {/* Left Logo // sticky top-0 z-50 */}
-        <div>
-          <Link href="/" className="flex justify-center items-center">
-            <Image
-              src={logo}
-              alt="logo"
-              className="dark:bg-white rounded-full mx-auto w-8 h-8"
-            />
-            <span className="font-bold text-xl text-gray-800">
-              Shop Store <strong className="text-blue-500">.</strong>
-            </span>
-          </Link>
-        </div>
-        {/* Center Navigation Menu */}
-        <div className="flex">
-          <ul className="hidden md:flex justify-center items-center font-bold space-x-6">
-            <li>
-              <Link
-                href="/"
-                className="text-gray-800 text-lg hover:text-blue-400 font-bold"
-              >
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/products"
-                className="text-gray-800 text-lg hover:text-blue-400 font-bold"
-              >
-                Products
-              </Link>
-            </li>
-          </ul>
-        </div>
-
-        {/* Rigth */}
-        <div className="hidden md:flex space-x-8">
-          {/* Right Side cart*/}
-          <div className="block">
-            <button
-              onClick={handleClickShowCart}
-              type="button"
-              className="relative drawer-button btn btn-primary text-gray-100 rounded-full"
-            >
-              <FaCartArrowDown className="w-6 h-6" />
-              <span className="absolute bottom-1 right-2 text-red-700 text-base">
-                {totalQuantity}
+      <header className="w-full h-20 sticky top-0 z-50 flex sm:flex-wrap justify-between items-center p-4 bg-white border-b-2 shadow-2xl ">
+        {/* container */}
+        <div className="container flex justify-between items-center">
+          {/* Logo */}
+          <div>
+            <Link href="/" className="flex justify-center items-center">
+              <Image
+                src={logo}
+                alt="logo"
+                className="dark:bg-white rounded-full mx-auto w-8 h-8"
+              />
+              <span className="font-bold text-xl text-gray-800">
+                Shop Store <strong className="text-blue-500">.</strong>
               </span>
-            </button>
+            </Link>
+          </div>
+          {/* Center Navigation Menu */}
+          <div className="flex">
+            <ul className="hidden md:flex justify-center items-center font-bold space-x-6">
+              <li>
+                <Link
+                  href="/"
+                  className="text-gray-800 text-lg hover:text-blue-400 font-bold"
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/products"
+                  className="text-gray-800 text-lg hover:text-blue-400 font-bold"
+                >
+                  Products
+                </Link>
+              </li>
+            </ul>
           </div>
 
-          {/* Right Side Login */}
-          <div>
-            <button className="btn btn-primary w-28 text-white p-1 rounded-md">
+          {/* Rigth Side */}
+          <div className="hidden md:flex justify-center items-center space-x-4">
+            {/* Right Side cart*/}
+            <div className="">
+              <button
+                onClick={handleClickShowCart}
+                type="button"
+                className="relative text-blue-500"
+              >
+                <span className="absolute top-3 right-1 text-red-700 text-base">
+                  {totalQuantity}
+                </span>
+                <FaCartArrowDown className="w-6 h-6 hover:text-blue-400" />
+              </button>
+            </div>
+
+            {/* Right Side Login */}
+            <div>
+              {/* <button className="btn btn-primary w-28 text-white p-1 rounded-md">
               <Link
                 href="/header/connection"
                 className="flex justify-center items-center text-base"
               >
                 Login <User />
               </Link>
-            </button>
+            </button> */}
+              <Link
+                href="/header/connection"
+                className="text-blue-500 hover:text-blue-400 text-base p-1"
+              >
+                <User size={24} />
+              </Link>
+            </div>
           </div>
-        </div>
 
-        {/* Mobile Menu Icon */}
-        <div className="md:hidden">
-          <div
-            onClick={toggleMenu}
-            className="flex items-center justify-center"
-          >
-            {showMenu ? (
-              <IoMdClose className="h-6 w-6 fill-current text-gray-800 cursor-pointer" />
-            ) : (
-              <IoMdMenu className="h-6 w-6 fill-current border text-gray-800 cursor-pointer" />
-            )}
+          {/* Mobile Menu Icon */}
+          <div className="md:hidden">
+            <div
+              onClick={toggleMenu}
+              className="flex items-center justify-center"
+            >
+              {showMenu ? (
+                <IoMdClose className="h-6 w-6 fill-current text-gray-800 cursor-pointer" />
+              ) : (
+                <IoMdMenu className="h-6 w-6 fill-current border text-gray-800 cursor-pointer" />
+              )}
+            </div>
           </div>
         </div>
 
@@ -105,15 +114,15 @@ export default function HeaderNavigation() {
           onClick={toggleMenu}
           className={
             showMenu
-              ? "w-full absolute left-0 top-16 bg-slate-900 text-gray-800 px-4 py-6 mt-4 flex flex-col rounded-xl transition-opacity duration-300"
+              ? "w-[300px] h-screen md:hidden absolute right-0 top-20 bg-slate-900  bg-opacity-90 text-gray-800 text-center px-4 py-6 transition-opacity duration-300"
               : "absolute left-[-100%]"
           }
         >
-          <ul className="flex flex-col w-full space-y-2">
+          <ul className="flex flex-col space-y-3">
             <li className="mb-2">
               <Link
                 href="/"
-                className="w-full text-gray-100/90 text-lg hover:text-blue-400 font-bold rounded-md"
+                className="w-[500px] text-gray-100/90 text-lg hover:text-blue-400 font-bold rounded-md"
               >
                 Home
               </Link>
@@ -128,14 +137,14 @@ export default function HeaderNavigation() {
             </li>
           </ul>
 
-          <div className="mt-6 flex justify-around items-center">
+          <div className="mt-6 flex flex-col justify-around items-center space-y-5">
             {/* Right Side Login */}
-            <div className="w-3/4 flex justify-center items-center">
+            <div className="">
               <Link
                 href="/header/connection"
-                className="btn btn-primary w-full text-white text-lg p-2 rounded-md"
+                className="btn btn-primary w-40 text-white text-lg p-2 rounded-md"
               >
-                Login <User />
+                <User />
               </Link>
             </div>
             {/* Right Side Panier*/}
@@ -143,18 +152,20 @@ export default function HeaderNavigation() {
               <button
                 onClick={handleClickShowCart}
                 type="button"
-                className="relative drawer-button btn btn-primary text-gray-100 rounded-full"
+                className="relative drawer-button btn btn-primary text-gray-100"
               >
                 <FaCartArrowDown className="w-6 h-6" />
-                <span className="absolute top-1 right-2 text-gray-100/90">
+                <span className="absolute top-1 right-2 text-red-500 font-semibold">
                   0
                 </span>
               </button>
             </div>
           </div>
         </div>
+
+        {/* Cart Sidebar */}
+        {showCart && <CardSideBar />}
       </header>
-      {showCart && <CardSideBar />}
     </>
   );
 }

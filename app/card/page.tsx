@@ -11,7 +11,6 @@ const CardSideBar = () => {
     setShowCart,
     cartItems,
     setCartItems,
-    quantity,
     totalQuantity,
     totalPrice,
     incrementQuantity,
@@ -47,11 +46,8 @@ const CardSideBar = () => {
   };
   // Affichage(render);
   return (
-    <div className="w-[100vw] bg-black bg-opacity-50 sticky right-0 top-0 z-10">
-      <div
-        className="container relative w-[500px] h-fit text-gray-800
-       float-right px-[40px] py-[50px] shadow-lg"
-      >
+    <div className="absolute top-20 right-0 bg-slate-950 bg-opacity-80 z-10 rounded-md">
+      <div className=" w-[500px] h-fit text-gray-800 px-[40px] py-[50px] shadow-lg float-right">
         <button type="button" className="">
           <AiOutlineLeft
             onClick={handleClose}
@@ -61,15 +57,15 @@ const CardSideBar = () => {
             Cart Shopping {totalQuantity} item(s)
           </h2>
         </button>
-        <div className="flex flex-col space-y-2 border-2 bg-gray-100 rounded-md p-6 my-4 shadow-xl">
-          <span className="flex justify-end items-center text-gray-800 text-xl font-bold">
+        <div className="flex flex-col space-y-3 bg-gray-400 rounded-md p-6 my-4 shadow-xl">
+          <span className="text-center text-gray-800 text-xl font-bold">
             Total Price: {totalPrice}$
           </span>
           <div className="flex flex-col space-y-2">
             {cartItems.map((product) => (
               <div
                 key={product.id}
-                className="flex items-center border-b-2 mb-2 space-x-2"
+                className="bg-slate-100/90 flex justify-center items-center border-b-2 mb-6 space-x-2 p-3 rounded-md"
               >
                 <Image
                   src={product.image}
@@ -86,15 +82,15 @@ const CardSideBar = () => {
                     {product.quantity} x ${product.price}
                   </span>
                 </div>
-                <div className="w-full flex flex-col items-center my-4 mx-auto">
-                  <div>
+                <div className="flex flex-col justify-center items-center my-4 mx-auto">
+                  <div className="">
                     <button
                       onClick={incrementQuantity}
                       className="w-16 bg-blue-500 text-lg text-gray-100 text-center rounded-md"
                     >
                       +
                     </button>
-                    <span className="mx-2 text-lg">{product.quantity}</span>
+                    <span className="ml-7 text-lg">{product.quantity}</span>
                     <button
                       onClick={decrementQuantity}
                       className="w-16 bg-red-500 text-lg text-gray-100 text-center rounded-md"
@@ -121,25 +117,3 @@ const CardSideBar = () => {
 };
 
 export default CardSideBar;
-
-{
-  /* 
-  <div className="drawer-side">
-        <label
-          htmlFor="my-drawer-4"
-          aria-label="close sidebar"
-          className="drawer-overlay"
-        ></label>
-        <div className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
-          {/* Sidebar content here 
-          <div className="card-body">
-            <span className="text-xl font-bold text-gray-100/90 mb-3">0 Items</span>
-            <span className="text-info mb-3">Subtotal: $0</span>
-            <div className="card-actions">
-              <button className="btn btn-primary btn-block">View cart</button>
-            </div>
-          </div>
-        </div>
-      </div> 
-      */
-}

@@ -1,4 +1,5 @@
 "use client";
+// Imports;
 import {
   createContext,
   Dispatch,
@@ -71,7 +72,6 @@ export const ContextProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   // Déclaration des états dans le ContextProvider et leurs initialisations.
-
   {
     /* States */
   }
@@ -86,7 +86,7 @@ export const ContextProvider: React.FC<{ children: React.ReactNode }> = ({
   const [totalQuantity, setTotalQuantity] = useState<number>(0);
   const [totalPrice, setTotalPrice] = useState<number>(0);
 
-  // Comportement;
+  // Comportements;
   const addProductToCart = (data: DataType, quantity: number) => {
     // Add product to cart logic here
     //...
@@ -111,8 +111,8 @@ export const ContextProvider: React.FC<{ children: React.ReactNode }> = ({
       setCartItems([...cartItems, { ...data }]);
     }
   };
-  const incrementQuantity = () => setQuantity(quantity + 1);
-  //setQuantity((prev) => prev + 1);
+  const incrementQuantity = () => setQuantity((prev) => prev + 1);
+
   const decrementQuantity = () => {
     setQuantity((prev) => {
       if (prev - 1 < 1) return 1;
